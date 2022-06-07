@@ -1,0 +1,78 @@
+﻿@model WebApplication5.Models.type
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+    
+
+    h2 {
+        color: purple;
+        text-decoration: underline;
+        font-family: 'Harlow Solid';
+        font-size: 40px;
+    }
+
+    input[type=submit] {
+        background-color: #1478c4;
+        border: none;
+        color: white;
+        padding: 16px 81px;
+        text-decoration: none;
+    }
+
+    section {
+        position: absolute;
+        left: 550px;
+        top: 180px;
+    }
+
+    body {
+        background-image: url('../../Content/de.jpg');
+        /* background-image: url('../../Content/main.jpg');*/
+        background-size: cover;
+        background-position: unset;
+        padding: 200px;
+        width: auto;
+    }
+
+
+    fieldset {
+        background-color:antiquewhite;
+        padding: 0px 105px 0px 105px;
+        border: groove;
+    }
+
+    legend {
+        padding: 80px 140px 50px 60px;
+        font-weight: bold;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    .dl-horizontal dt{text-align:left;}
+</style>
+<body>
+    <section>
+        <fieldset>
+            <legend><h2>Details</h2></legend>
+
+                <dl class="dl-horizontal">
+                    <dt >
+                       denomination :
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.denomination)
+                    </dd>
+
+                </dl>
+           
+            <p>
+                <a href="@Url.Action("Edit", "types" , new { id = Model.id_type })" class="ml-3 align-text"><i class="fas fa-pen-square fa-2x "></i> </a>
+                @*@Html.ActionLink("Edit", "Edit", new { id = Model.id_type })*@ 
+
+            </p>
+        </fieldset>
+    </section><div class="icon">
+    <a href="@Url.Action("Index", "types")"><i class="fas fa-arrow-circle-left fa-4x"></i></a>
+</div>
+</body>

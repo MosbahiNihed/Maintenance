@@ -1,0 +1,184 @@
+﻿@model WebApplication5.Models.eya
+
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>signin</title>
+    <style>
+       
+        body {
+            background-image: url('../../Usertemp/images/222.png');
+            background-size: cover;
+            padding: 50px;
+            width: auto;
+            background-position: unset;
+        }
+        .login-box{
+            width:280px;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            color:midnightblue;
+        }
+        .textbox{
+            width:100%;
+            overflow:hidden;
+            font-size:10px;
+            padding:3px 0;
+            margin:3px 0;
+            border-bottom:1px solid;
+        }
+        .textbox input{
+            color:white;
+            border:groove;
+            border-radius:20px;
+            margin-left:10%;
+            background: rgba(255,255,255,.3);
+            text-align:center;
+        }
+        .form-control{background-color:transparent;
+                      border-block-color:#ff0000;
+                      border:solid;
+        }
+        ::placeholder {
+           font-family:'Sitka Banner';
+            font-size: 1.5em;
+        }
+        .box-show {
+            box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.4) inset;
+            border-radius: 20px;
+            width: 25%;
+            background: rgb(225,225,225, 0.6);
+            
+            
+        }
+        .ml-1{margin-left:5%;}
+        .ml-2{margin-left: 10%;}
+        .ml-3{margin-left: 15%;}
+        .ml-4 {
+            margin-left: 20%;
+        }
+
+        .ml-5 {
+            margin-left: 27%;
+        }
+        .ml-6 {
+            margin-left: 30%;
+        }
+        .mt-1{
+            margin-top:5%;
+        }
+        .mt-2 {
+            margin-top: 10%;
+        }
+        .size-btn{
+            width:30%;
+            height:40px;
+        }
+        .mb-1{
+            margin-bottom:5%;
+        }
+        .mb-2 {
+            margin-bottom: 10%;
+        }
+    </style>
+</head>
+<body>
+    <script src="js/jquery.min.js"></script>
+    <!-- //js -->
+    <script src="js/jquery.vide.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    @*<div class="form-horizontal">*@
+    <div class="login-box box-show">
+   
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="textbox">
+            @*@Html.LabelFor(model => model.login, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10 mt-1">
+                @Html.EditorFor(model => model.login, new { htmlAttributes = new { @class = "mt-1 form-control", @placeholder = "Login" } })
+                @Html.ValidationMessageFor(model => model.login, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @*<div class="form-group">*@
+        <div class="textbox">
+            @*@Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.password, new
+                      {
+                          htmlAttributes = new
+                          {
+                              @type = "password",
+                              @name = "password",
+                              @id = "password",
+                              @placeholder = "Your Password * ",
+                              @class = "mt-1 form-control",
+                              @required = ""
+
+                          }
+                      })
+                @*@Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password" } })*@
+                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="textbox">
+            @*@Html.LabelFor(model => model.departement, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.departement, new { htmlAttributes = new { @class = "mt-1 form-control", @placeholder = "departement" } })
+                @Html.ValidationMessageFor(model => model.departement, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="textbox">
+            @*@Html.LabelFor(model => model.departement, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.role, new { htmlAttributes = new { @class = "mt-1 form-control", @placeholder = "role" } })
+                @Html.ValidationMessageFor(model => model.role, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.type, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.type, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.type, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+            @*<div class="form-group">
+                @Html.LabelFor(model => model.role, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.role, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.role, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+       
+        <div class="textbox">
+            <div class="col-md-offset-2 col-md-10">
+                <button class="ml-5 mt-1 btn btn-success btn-sm ml-3 size-btn mb-2 ">valider</button>
+                @*<input class="btn-default" type="submit" value="Create" />*@
+            </div>
+        </div>
+
+    </div>
+
+    }
+    <br />
+    @*<div>
+            @Html.ActionLink("signup", "Registration")
+        </div>*@
+</body>
+</html>

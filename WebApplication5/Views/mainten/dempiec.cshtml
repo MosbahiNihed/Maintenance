@@ -1,0 +1,154 @@
+﻿@model IEnumerable<WebApplication5.Models.demdetails>
+
+
+@{
+    ViewBag.Title = "dempiec";
+    Layout = "~/Views/mainten/_Layoutmainte.cshtml";
+}
+<br />
+<br />
+<br />
+
+<style>
+    .hi {
+        padding: 8px;
+    }
+    body {
+        background-color: aliceblue;
+    }
+    h2 {
+        color: black;
+        text-decoration: underline;
+        text-transform: capitalize;
+    }
+</style>
+<body>
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+    <center>
+        <h2>Demande des piéces</h2>
+        <br />
+
+        <table class="table table-bordered align-text-new">
+            <tr class="btn-primary ">
+                
+                <th class="text-center">
+                    Numéro
+                </th>
+                <th class="text-center">
+                    Référence
+                </th>
+                <th class="text-center">
+                    Libellé
+                </th>
+                <th class="text-center">
+                    Type
+                </th>
+                <th class="text-center">
+                    Piéces demandées
+                </th>
+                
+            </tr>
+
+            @foreach (var item in ViewBag.Message)
+            {
+                <tr>
+                    <td>
+                        @item.Numéro
+                    </td>
+                    <td>
+                        @item.Référence
+                    </td>
+                    <td>
+                        @item.Libellé
+                    </td>
+                    <td>
+                        @item.Type
+                    </td>
+                    <td>
+                        <div class="hi">
+                            <center>
+                                @Html.DropDownList("list", ViewBag.Pieces as SelectList, "Choix d'une piece")
+                                <br />
+                                <br />
+
+                                <a href="@Url.Action("Ajou", "mainten")"><i class="fas text-light fa-plus-square fa-2x"></i></a>
+                            </center>
+                            @*@Html.ActionLink("Ajout", "Ajou", "mainten")*@
+                            @*<button class="btn btn-primary btn-sm" data-target="#loginModal" data-toggle="modal">Ajout</button>*@
+                        </div>
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+
+        <!--<div class="container">
+    <div class="row">
+        <div class="col-xs-12">-->
+        @*<button class="btn btn-primary btn-sm" data-target="#loginModal" data-toggle="modal">bouton</button>*@
+        <!--<div class="modal fade" tabindex="-1" id="loginModal"
+     data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+                <h4 class="modal-title">demande de piéce</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+
+                        <input class="form-control" placeholder="id_piéce"
+                               type="text" id="inputUserName" />
+                    </div>-->
+        @*<div class="form-group">
+
+            <div class="hi">
+                @Html.DropDownList("list", ViewBag.breakdown as SelectList, "please select one") <br />
+            </div>
+        </div>*@
+        <!--<div class="form-group">
+
+        <input class="form-control" placeholder="nom de piéce"
+               type="text" id="inputPanne" />
+    </div>
+    <div class="form-group">
+        <input class="form-control" placeholder="Description"
+               type="text" id="inputPanne" />-->
+        @*@Html.EditorFor(model=> Model.Where, new
+        {
+            htmlAttributes = new
+            {
+                @type = "text",
+                @name = "w3lName",
+                @id = "w3lName",
+                @placeholder = "Description",
+                @class = "contact-input",
+                @required = ""
+            }
+        })*@
+        @*</div>
+            </form>
+        </div>
+        <div class="modal-footer">*@
+        @*@Html.ActionLink("valider", "dempi", "mainten")*@
+        @*<button type="submit" class="btn btn-primary" Onclick="alert('votre demande est bien enregistrée')">Valider</button>*@
+        <!--<button type="button" class="btn btn-primary"
+                                        data-dismiss="modal">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>-->
+    </center>
+</body>

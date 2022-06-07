@@ -1,0 +1,96 @@
+﻿@model WebApplication5.Models.type
+
+@{
+    ViewBag.Title = "Edit";
+}
+<style>
+    .icon {
+        position: absolute;
+        left: 100px;
+        top: 80px;
+    }
+
+    h2 {
+        color: purple;
+        text-decoration: underline;
+        font-family: 'Harlow Solid';
+        font-size: 40px;
+    }
+
+    input[type=submit] {
+        background-color: #1478c4;
+        border: none;
+        color: white;
+        padding: 16px 81px;
+        text-decoration: none;
+    }
+
+    section {
+        position: absolute;
+        left: 550px;
+        top: 80px;
+    }
+
+    body {
+        background-image: url('../../Content/de.jpg');
+        /* background-image: url('../../Content/main.jpg');*/
+        background-size: cover;
+        background-position: unset;
+        padding: 200px;
+        width: auto;
+    }
+
+    .mh {
+        position: absolute;
+        left: 450px;
+        top: 600px;
+    }
+
+    fieldset {
+        padding: 0px 95px 0px 95px;
+        border: groove;
+    }
+
+    legend {
+        padding: 0px 60px;
+        font-weight: bold;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+</style>
+<body>
+
+    <section>
+        <fieldset>
+            <legend><h2>Edit</h2></legend>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.id_type)
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.denomination, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.denomination, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.denomination, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </fieldset>
+    </section>
+    <div class="icon">
+        <a href="@Url.Action("Index", "types")"><i class="fas fa-arrow-circle-left fa-4x"></i></a>
+    </div>
+</body>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebApplication5.Models.type>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/mainten/_Layoutmainte.cshtml";
+}
+<style>    body {
+        background-color: aliceblue;
+    }
+    h2{text-decoration:underline;}
+</style>
+
+<br />
+<br />
+<br />
+<center>
+    <h2>Gestion des types d'equipements</h2>
+</center>
+
+<p>
+    @Html.ActionLink("Ajouter un type d'equipement", "Create")
+</p>
+<table class="table table-bordered  align-text-new">
+    <tr class="btn-primary">
+        <th class="text-center">Id</th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.denomination)
+        </th>
+        <th></th>
+
+    </tr>
+
+    @foreach (var item in Model) {
+    <tr >
+        <td>@Html.DisplayFor(modelItem =>item.id_type)</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.denomination)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "types" ,new { id = item.id_type })" class="ml-3 align-text"><i class="fas fa-pen-square fa-2x "></i> </a>
+            <a href="@Url.Action("Details", "types", new { id = item.id_type })" class="ml-3 align-text"><i class="fas fa-info-circle fa-2x"></i> </a>
+            <a href="@Url.Action("Delete", "types", new { id = item.id_type })" class="ml-3 align-text"><i class="fas fa-trash fa-2x "></i> </a>
+
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.id_type }) |
+            @Html.ActionLink("Details", "Details", new { id = item.id_type }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.id_type })*@
+            @*, new { id = item.Numéro })*@
+        </td>
+    </tr>
+}
+
+</table>

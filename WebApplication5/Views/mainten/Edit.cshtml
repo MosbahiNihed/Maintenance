@@ -1,0 +1,108 @@
+﻿@model WebApplication5.Models.class2
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/mainten/_Layoutmainte.cshtml";
+}
+<link href="~/Content/all.css" rel="stylesheet" />
+<style>
+    .icon {
+        position: absolute;
+        left:100px;
+        top: 80px;
+    }
+    h2 {
+        color:purple;
+        text-decoration:underline;
+        font-family:'Harlow Solid';
+        font-size:40px;
+
+
+    }
+    input[type=submit] {
+        background-color: #1478c4;
+        border: none;
+        color: white;
+        padding: 16px 81px;
+        text-decoration: none;
+        
+    }
+    section {
+        position: absolute;
+        left: 550px;
+        top: 80px;
+    
+    }
+    body {
+        background-image: url('../../Content/de.jpg');
+        /* background-image: url('../../Content/main.jpg');*/
+        background-size: cover;
+        background-position: unset;
+        padding: 200px;
+        width: auto;
+    }
+     .mh{
+        position: absolute;
+        left: 450px;
+        top: 600px;
+       
+            
+    }
+    fieldset {
+        padding: 0px 95px 0px 95px;
+        border:groove;
+        
+    }
+
+    legend {
+        
+        padding: 0px 60px;
+        font-weight: bold;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+       
+    }
+    /*.form-control{background-color:transparent;}*/
+ 
+</style>
+
+<body>
+    <section>
+        <fieldset>
+            <legend><h2>Edit</h2></legend>
+            @using (Html.BeginForm("Edit", "mainten", FormMethod.Post))
+            {
+                @Html.TextBoxFor(x => x.id_equip, new { @class = "form-control", @placeholder = "Numéro" })
+                <br />
+                @Html.TextBoxFor(x => x.id_dep, new { @class = "form-control", @placeholder = "id depa" })<br />
+                @Html.TextBoxFor(x => x.libelledep, new { @class = "form-control", @placeholder = "Département" })<br />
+                @Html.TextBoxFor(x => x.@ref, new { @class = "form-control", @placeholder = "Référence" })<br />
+                @Html.TextBoxFor(x => x.libelleq, new { @class = "form-control", @placeholder = "Libelle" })<br />
+                @Html.TextBoxFor(x => x.id_type, new { @class = "form-control", @placeholder = "id type" })<br />
+                @Html.TextBoxFor(x => x.etat, new { @class = "form-control", @placeholder = "etat" })<br />
+                @Html.TextBoxFor(x => x.denomination, new { @class = "form-control", @placeholder = "Type" })<br />
+                @Html.TextBoxFor(x => x.id_fiche, new { @class = "form-control", @placeholder = "Fiche technique" })<br />
+                @Html.TextBoxFor(x => x.id_typentr, new { @class = "form-control", @placeholder = "id type entretien" })<br />
+
+                @Html.TextBoxFor(x => x.libellentr, new { @class = "form-control", @placeholder = "Historique de reparation" })
+                <br />
+                <div>
+                    <input type="submit" value="submit" class="mh" />
+                </div>
+
+           
+            }
+        </fieldset>
+    </section>
+    <br />
+    <br />
+    <br />
+
+
+    <div class="icon">
+        <a href="@Url.Action("gestequip", "mainten")"><i class="fas fa-arrow-circle-left fa-4x"></i></a>
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body>

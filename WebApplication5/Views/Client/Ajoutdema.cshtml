@@ -1,0 +1,255 @@
+﻿@model IEnumerable<WebApplication5.Models.clientdetails>
+@*@model dynamic*@
+@{
+    ViewBag.Title = "Ajoutdema";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link href="~/Content/all.css" rel="stylesheet" />
+
+</head>
+<h2>Espace Client</h2>
+<style>
+    .modal-title {
+        color: #e800ff;
+        font-size: 37px;
+        text-decoration: underline;
+        font-family: 'Harlow Solid';
+    }
+    .modal-content {
+        background-color: transparent;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 250px;
+    }
+    .close:hover {
+        background-color: darkred;
+    }
+    .close{font-size:80px;
+           color:red;
+    }
+    .modal-footer:hover
+    {
+        background-color: rgb(192, 192, 192);
+    }
+   
+    .hi {
+        padding: 110px;
+    }
+
+    h2 {
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size:50px;
+        text-decoration: underline;
+        color: #e800ff;
+        text-transform: uppercase;
+        text-shadow: 1px 1px;
+        position: absolute; /* postulat de départ */
+        top: 80%;
+        left: 78%; /* à 50%/50% du parent référent */
+    }
+
+    td {
+        color: black;
+        font-size: large;
+        background-color: #ffffff;
+    }
+
+    th {
+        color: black;
+        text-align: center;
+    }
+/*
+    body::before {
+        background-image: url('../../Content/de.jpg');
+        opacity:0.1;
+    }*/
+    body {
+        background-image: url('../../Content/de.jpg');
+        /*background-image: url('../../Content/background.png');*/
+        background-size: cover;
+        background-position: unset;
+        padding: 200px;
+        width: auto;
+    }
+    .styleback {
+        width: 80%;
+        height: 600px;
+        background-color: rgb(255,255,255,0.4);
+    }
+    .fa-plus-square {
+        color: black;);
+         /* à 50%/50% du parent référent */
+     
+    }
+</style>
+<body>
+    @*<p>
+            @Html.ActionLink("Panne", "ajout","Client")
+        </p>*@
+    @*<div class="styleback">*@
+        <table class="table table-bordered align-text-new">
+            <tr class="btn-primary">
+                <th>
+                    Numéro
+
+                </th>
+                <th>
+                    Référence
+                </th>
+                <th>
+                    Libellé
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Fiche technique
+                </th>
+                <th>
+                    Historique de réparation
+                </th>
+                <th>
+                    Ajout demande de réparation
+                </th>
+
+            </tr>
+
+            @foreach (var item in ViewBag.Message)
+            {
+        <tr>
+            <td>
+                @item.Numéro
+            </td>
+            <td>
+                @item.Référence
+            </td>
+            <td>@item.Libellé</td>
+            <td>
+                @item.Type
+
+            </td>
+
+            @*@foreach (var itm in Model)
+        {*@
+            @*<td>
+
+        <input type="file" name="files" id="files" multiple="multiple" />
+        <input type="submit" class="btn" name="submit" />
+        <br />*@
+
+            @*<li class="active"><a href="@Url.Action("Download", "Client",new { fileName = itm.File })"><i class="fas fa-file-pdf fa-4x"></i></a></li>*@
+            @*@Html.ActionLink("Download", "mainten", new { fileName = itm.File })*@
+            @*@item.Fiche_technique*@
+            <!--</td>
+    }-->
+            <td>
+                @{string myString = Convert.ToString(item.Numéro);
+                }
+                @{string ch = myString + ".pdf";}
+                <a href="~/Files/@ch">test.pdf</a>
+
+            </td>
+            <td>@item.Historique_de_réparation</td>
+
+
+            @*<td>*@
+
+        <td>
+            <span   data-target="#loginModal" data-toggle="modal" ><i  class="fas fa-plus-square fa-2x "></i></span>
+            @*<a href="@Url.Action("Ajout", "mainten")"><i class="fas text-light fa-plus-square fa-2x"></i></a>*@
+            @*<button class="btn btn-primary btn-sm" data-target="#loginModal" data-toggle="modal">Ajout</button>*@
+
+            @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+        </td>
+        </tr>
+            }
+
+        </table>
+    @*</div>*@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                @*<button class="btn btn-primary btn-sm" data-target="#loginModal" data-toggle="modal">bouton</button>*@
+                
+                    <div class="modal fade" tabindex="-1" id="loginModal"
+                         data-keyboard="false" data-backdrop="static">
+                        
+                            <div class="modal-dialog modal-sm">
+                                
+                                <div class="modal-content">
+                                    
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                &times;
+                                            </button>
+                                    
+                                            <h4 class="modal-title text-center">Demande de Réparation</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="form-group">
+
+                                                    @*<input class="form-control" placeholder="....."
+                        type="text" id="inputUserName" />*@
+                                                    @*@Html.EditorFor(Model => Model. new
+                        {
+                            @type = "text",
+                                @name = "w3lName",
+                                @id = "w3lName",
+                                @placeholder = "panne*",
+                                @class = "contact-input",
+                                @required = ""
+                            }
+                        )*@
+                                                </div>
+                                                <div class="form-group">
+
+                                                    <div class="form-control">
+                                                        @Html.DropDownList("list", ViewBag.breakdown as SelectList, "please select one") <br />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+
+                                                    <input class="form-control" placeholder="Autres"
+                                                           type="text" id="inputPanne" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="form-control" placeholder="Description"
+                                                           type="text" id="inputPanne" />
+                                                 @*<h2>@Model.description</h2>
+                                                    @Html.EditorFor(@Model => @Model.description , new
+                                                {
+                                                    htmlAttributes = new
+                                                    {
+                                                        @type = "text",
+                                                        @name = "w3lName",
+                                                        @id = "w3lName",
+                                                        @placeholder = "Description",
+                                                        @class = "contact-input",
+                                                        @required = ""
+                                                    }
+                                                })}*@
+                                                                        </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary " Onclick="alert('la panne est bien enregistrée')">Envoyer</button>
+                                            @*<button type="button" class="btn btn-primary"
+                        data-dismiss="modal">
+                    Close
+                </button>*@
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+
+                </div>
+        </div>
+    </div>
+
+</body>
